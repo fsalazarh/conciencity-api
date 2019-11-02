@@ -1,0 +1,10 @@
+{
+  "name": "db",
+  "host": "cluster0-feiy0.mongodb.net",
+  "database": "conciencity",
+  "protocol": "mongodb+srv",
+  "connector": "mongodb",
+  "user": "acciona",
+  "password": "accionaadmin",
+  "useNewUrlParser": true
+}
