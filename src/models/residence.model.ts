@@ -6,10 +6,9 @@ export class Residence extends User {
   @property({
     type: 'string',
     id: true,
-    generated: true,
+    //generated: true,
   })
-  id?: string;
-
+  id: string;
 
   constructor(data?: Partial<Residence>) {
     super(data);

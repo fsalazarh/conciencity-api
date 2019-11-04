@@ -1,5 +1,5 @@
 {
-  "name": "db",
+  "name": "mongo",
   "host": "cluster0-feiy0.mongodb.net",
   "database": "conciencity",
   "protocol": "mongodb+srv",

@@ -17,13 +17,18 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
+import {
+  authenticate,
+  TokenService,
+  UserService,
+} from '@loopback/authentication';
 import {Residence} from '../models';
 import {ResidenceRepository} from '../repositories';
 
 export class ResidenceController {
   constructor(
     @repository(ResidenceRepository)
-    public residenceRepository : ResidenceRepository,
+    public residenceRepository: ResidenceRepository,
   ) {}
 
   @post('/residences', {
@@ -59,7 +64,8 @@ export class ResidenceController {
     },
   })
   async count(
-    @param.query.object('where', getWhereSchemaFor(Residence)) where?: Where<Residence>,
+    @param.query.object('where', getWhereSchemaFor(Residence))
+    where?: Where<Residence>,
   ): Promise<Count> {
     return this.residenceRepository.count(where);
   }
@@ -76,8 +82,10 @@ export class ResidenceController {
       },
     },
   })
+  @authenticate('jwt')
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Residence)) filter?: Filter<Residence>,
+    @param.query.object('filter', getFilterSchemaFor(Residence))
+    filter?: Filter<Residence>,
   ): Promise<Residence[]> {
     return this.residenceRepository.find(filter);
   }
@@ -99,7 +107,8 @@ export class ResidenceController {
       },
     })
     residence: Residence,
-    @param.query.object('where', getWhereSchemaFor(Residence)) where?: Where<Residence>,
+    @param.query.object('where', getWhereSchemaFor(Residence))
+    where?: Where<Residence>,
   ): Promise<Count> {
     return this.residenceRepository.updateAll(residence, where);
   }

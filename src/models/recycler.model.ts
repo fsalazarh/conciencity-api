@@ -8,7 +8,7 @@ export class Recycler extends User {
     id: true,
     generated: true,
   })
-  id?: string;
+  id: string;
 
   constructor(data?: Partial<Recycler>) {
     super(data);

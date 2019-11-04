@@ -1,19 +1,38 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model({
+  settings: {
+    indexes: {
+      uniqueEmail: {
+        keys: {
+          email: 1,
+        },
+        options: {
+          unique: true,
+        },
+      },
+    },
+  },
+})
 export class User extends Entity {
   @property({
     type: 'string',
     id: true,
     generated: true,
   })
-  id?: string;
+  id: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  name: string;
+  firstName: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  lastName: string;
 
   @property({
     type: 'string',

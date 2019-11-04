@@ -8,9 +8,7 @@ export class RecyclerRepository extends DefaultCrudRepository<
   typeof Recycler.prototype.id,
   RecyclerRelations
 > {
-  constructor(
-    @inject('datasources.db') dataSource: DbDataSource,
-  ) {
+  constructor(@inject('datasources.db') dataSource: DbDataSource) {
     super(Recycler, dataSource);
   }
 }
